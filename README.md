@@ -1,6 +1,6 @@
-# Edge PHP API sdk
+# Edge PHP SDK
 
-This is a lightweight PHP API sdk for the Edge payment gateway. It uses Guzzle for making API requests and returns the responses as an array/object by default. The sdk communicates with the `https://api.tryedge.com` endpoint.
+This is a lightweight PHP SDK for the Edge payment gateway. It uses Guzzle for making API requests and returns the responses as an array/object by default. The sdk communicates with the `https://api.tryedge.com` endpoint.
 
 ## Installation
 
