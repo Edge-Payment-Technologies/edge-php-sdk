@@ -1,0 +1,12 @@
+{
+    "name": "edge/api-sdk",
+    "require": {
+      "php": ">=7",
+      "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+      "psr-4": {
+        "Edge\\": "src/"
+      }
+    }
+  }
