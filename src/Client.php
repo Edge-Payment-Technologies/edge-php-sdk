@@ -14,10 +14,12 @@ class Client
         if (!self::$client) {
             self::$client = new GuzzleClient([
                 'base_uri' => 'https://api.tryedge.com',
+
                 'headers' => [
                     'User-Agent' => 'Edge PHP 1.0.0',
                     'Authorization' => 'Bearer ' . Auth::getApiKey(),
                     'Accept' => 'application/vnd.api+json',
+
                 ],
             ]);
         }
@@ -28,10 +30,17 @@ class Client
     public static function create($endpoint, $body = [])
     {
         try {
-            $response = self::getClient()->post($endpoint, ['json' => $body]);
-            return new Response($response);
+            $response = self::getClient()->post($endpoint, [
+                'json' => $body,
+
+                'headers' => [
+                    'Content-Type' =>  'application/vnd.api+json'
+                ]
+
+            ]);
+            return (new Response($response))->toObject();
         } catch (RequestException $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
+            throw new Exception($e->getResponse()->getBody()->getContents());
         }
     }
 
@@ -39,19 +48,24 @@ class Client
     {
         try {
             $response = self::getClient()->get($endpoint, ['query' => $body]);
-            return new Response($response);
+            return (new Response($response))->toObject();
         } catch (RequestException $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
+            throw new Exception($e->getResponse()->getBody()->getContents());
         }
     }
 
     public static function update($endpoint, $body = [])
     {
         try {
-            $response = self::getClient()->put($endpoint, ['json' => $body]);
-            return new Response($response);
+            $response = self::getClient()->put($endpoint, [
+                'json' => $body,
+                'headers' => [
+                    'Content-Type' =>  'application/vnd.api+json'
+                ]
+            ]);
+            return (new Response($response))->toObject();
         } catch (RequestException $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
+            throw new Exception($e->getResponse()->getBody()->getContents());
         }
     }
 
@@ -59,10 +73,9 @@ class Client
     {
         try {
             $response = self::getClient()->delete($endpoint, ['json' => $body]);
-            return new Response($response);
+            return (new Response($response))->toObject();
         } catch (RequestException $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
+            throw new Exception($e->getResponse()->getBody()->getContents());
         }
     }
 }
-

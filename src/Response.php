@@ -41,6 +41,7 @@ class Response
         return json_decode($this->getBody());
     }
 
+
     public function handleResponse()
     {
         $statusCode = $this->getStatusCode();

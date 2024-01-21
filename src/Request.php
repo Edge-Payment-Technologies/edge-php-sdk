@@ -16,11 +16,7 @@ class Request
         $this->method = $method;
         $this->uri = $uri;
         $this->body = $body;
-        $this->headers = array_merge([
-            'User-Agent' => 'Edge PHP 1.0.0',
-            'Authorization' => 'Bearer ' . Auth::getApiKey(),
-            'Accept' => 'application/json',
-        ], $headers);
+        $this->headers = $headers;
     }
 
     public function getMethod()
