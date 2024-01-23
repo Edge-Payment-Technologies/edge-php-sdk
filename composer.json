@@ -1,5 +1,5 @@
 {
-    "name": "edge/api-sdk",
+    "name": "edge-payment-technologies/edge-php-sdk",
     "require": {
       "php": "^7.3||^8.0",
       "guzzlehttp/guzzle": "^7.0",
