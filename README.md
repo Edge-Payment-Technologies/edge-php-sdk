@@ -4,7 +4,15 @@ This is a lightweight PHP SDK for the Edge payment gateway. It uses Guzzle for m
 
 ## Installation
 
-This project is not yet available via Composer. You will need to clone or download the repository and include it in your project manually.
+To install the SDK, add the following to your composer.json file:
+
+```json
+"require": {
+    "edge-payment-technologies/edge-php-sdk": "^1.0"
+}
+```
+
+Then run `composer install` to add the SDK to your project.
 
 ## Usage
 
@@ -45,6 +53,14 @@ try {
 } catch (Edge\Exception $e) {
     echo 'Error: ' . $e->getMessage();
 }
+```
+
+## Helpers
+
+The SDK also includes a `Helpers` class with useful methods. For example, you can use the `convertAlpha2ToAlpha3` method to convert a country code from ISO 3166-1 alpha-2 to ISO 3166-1 alpha-3.
+
+```php
+$alpha3 = Edge\Helpers::convertAlpha2ToAlpha3('US');
 ```
 
 ## Contributing
