@@ -34,7 +34,7 @@ class Client
                 'json' => $body,
 
                 'headers' => [
-                    'Content-Type' =>  'application/vnd.api+json'
+                    'Content-Type' => 'application/vnd.api+json'
                 ]
 
             ]);
@@ -60,7 +60,7 @@ class Client
             $response = self::getClient()->put($endpoint, [
                 'json' => $body,
                 'headers' => [
-                    'Content-Type' =>  'application/vnd.api+json'
+                    'Content-Type' => 'application/vnd.api+json'
                 ]
             ]);
             return (new Response($response))->toObject();

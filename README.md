@@ -27,19 +27,19 @@ After setting the API key, you can use the `Client` class to make requests to th
 Here are some examples:
 
 ```php
-$create = Edge\Client::create('charges', [] /*body can be placed here*/);
+$create = Edge\Client::create('payment_demands', [] /*body can be placed here*/);
 
-$get = Edge\Client::get('charges', [] /*body can be placed here*/);
+$get = Edge\Client::get('payment_demands', [] /*body can be placed here*/);
 
-$update = Edge\Client::update('charges', [] /*body can be placed here*/);
+$update = Edge\Client::update('payment_demands', [] /*body can be placed here*/);
 
-$delete = Edge\Client::delete('charges', [] /*body can be placed here*/);
+$delete = Edge\Client::delete('payment_demands', [] /*body can be placed here*/);
 ```
 
 By default, the response from these methods will be an object. If you want to get the response as an array, you can use the `toArray` method.
 
 ```php
-$response = Edge\Client::get('charges');
+$response = Edge\Client::get('payment_demands');
 $arrayResponse = $response->toArray();
 ```
 
@@ -49,7 +49,7 @@ This sdk uses exceptions for error handling. If an error occurs during a request
 
 ```php
 try {
-    $response = Edge\Client::get('charges');
+    $response = Edge\Client::get('payment_demands');
 } catch (Edge\Exception $e) {
     echo 'Error: ' . $e->getMessage();
 }
