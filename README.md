@@ -229,7 +229,7 @@ $alpha3 = Edge\Helpers::convertAlpha2ToAlpha3('US');
 
 ## Development
 
-The PHP version is pinned in `.tool-versions` and managed with [mise](https://mise.jdx.dev):
+The PHP version is pinned in `mise.toml` and managed with [mise](https://mise.jdx.dev):
 
 ```bash
 mise install
