@@ -13,10 +13,10 @@ class Client
     {
         if (!self::$client) {
             self::$client = new GuzzleClient([
-                'base_uri' => 'https://api.tryedge.com',
+                'base_uri' => 'https://api.tryedge.io',
 
                 'headers' => [
-                    'User-Agent' => 'Edge PHP 1.0.0',
+                    'User-Agent' => 'Edge PHP 2.0.0',
                     'Authorization' => 'Bearer ' . Auth::getApiKey(),
                     'Accept' => 'application/vnd.api+json',
 
