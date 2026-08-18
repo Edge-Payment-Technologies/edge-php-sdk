@@ -1,9 +1,8 @@
 # Edge PHP SDK
 
 A lightweight PHP SDK for the Edge payment gateway. It uses Guzzle for making API requests and
-returns decoded responses. The SDK talks to `https://api.tryedge.io/v2/`, which is a
+returns the responses. The SDK makes the requests to `https://api.tryedge.io` endpoint, which is a
 [JSON:API 1.0](https://jsonapi.org/) service speaking `application/vnd.api+json`.
-
 ## Installation
 
 To install the SDK, add the following to your composer.json file:
