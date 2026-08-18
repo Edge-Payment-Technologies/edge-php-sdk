@@ -57,7 +57,7 @@ class Client
     public static function update($endpoint, $body = [])
     {
         try {
-            $response = self::getClient()->put($endpoint, [
+            $response = self::getClient()->patch($endpoint, [
                 'json' => $body,
                 'headers' => [
                     'Content-Type' => 'application/vnd.api+json'
