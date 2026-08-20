@@ -33,8 +33,14 @@ $get = Edge\Client::get('payment_demands', [] /*body can be placed here*/);
 
 $update = Edge\Client::update('payment_demands', [] /*body can be placed here*/);
 
+// Omit the body for action endpoints that accept a bodyless PATCH request.
+$confirm = Edge\Client::update('v2/payment_demands/PAYMENT_DEMAND_ID/confirm');
+
 $delete = Edge\Client::delete('payment_demands', [] /*body can be placed here*/);
 ```
+
+Passing an update body sends it as JSON with the JSON:API content type. Omitting
+the body, or passing `null`, sends the PATCH request without a request body.
 
 By default, the response from these methods will be an object. If you want to get the response as an array, you can use the `toArray` method.
 
@@ -52,8 +58,26 @@ try {
     $response = Edge\Client::get('payment_demands');
 } catch (Edge\Exception $e) {
     echo 'Error: ' . $e->getMessage();
+
+    if ($e->getStatusCode() !== null) {
+        echo 'Status: ' . $e->getStatusCode();
+    }
+
+    if ($e->getRequest()) {
+        echo 'Request: ' . $e->getRequest()->getMethod()
+            . ' ' . $e->getRequest()->getUri()->getPath();
+    }
 }
 ```
+
+HTTP failures retain the PSR-7 request and response objects. Network failures retain
+the request, but `getResponse()` and `getStatusCode()` return `null` because no HTTP
+response was received. The original Guzzle exception is available through
+`getPrevious()`.
+
+Do not log or expose request headers or bodies. They can contain authorization
+credentials or sensitive payment data. Prefer the request method and URI path when
+recording diagnostic context.
 
 ## Helpers
 
