@@ -1,6 +1,6 @@
 # Edge PHP SDK
 
-This is a lightweight PHP SDK for the Edge payment gateway. It uses Guzzle for making API requests and returns the responses as an array/object by default. The sdk communicates with the `https://api.tryedge.io` endpoint.
+This is a lightweight PHP SDK for the Edge payment gateway. It uses Guzzle for making API requests and returns the responses as an array/object by default. The SDK communicates with the `https://api.tryedge.io/v2/` endpoint.
 
 ## Installation
 
@@ -34,6 +34,20 @@ $get = Edge\Client::get('payment_demands', [] /*body can be placed here*/);
 $update = Edge\Client::update('payment_demands', [] /*body can be placed here*/);
 
 $delete = Edge\Client::delete('payment_demands', [] /*body can be placed here*/);
+```
+
+Endpoints are resolved against the base URI, so `payment_demands`, `/payment_demands` and
+(for callers written against the old host-only base URI) `v2/payment_demands` all reach
+`https://api.tryedge.io/v2/payment_demands`. Absolute `http(s)://` URLs are used as-is.
+
+### Base URI
+
+The base URI defaults to `https://api.tryedge.io/v2/` and can be overridden with the
+`EDGE_API_BASE_URI` environment variable or at runtime. A host-only value gets `/v2` appended.
+
+```php
+Edge\Client::setBaseUri('https://api.tryedge.test:4001'); // => https://api.tryedge.test:4001/v2/
+Edge\Client::setVerifySsl(false); // local dev with a self-signed certificate only
 ```
 
 By default, the response from these methods will be an object. If you want to get the response as an array, you can use the `toArray` method.
